@@ -5,29 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Drag Test</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js"></script>
   </head>
   <body class="flex flex-col h-screen">
     <header class="text-center py-4">
       <h1 class="text-3xl font-bold">Drag Test</h1>
     </header>
     <main class="flex-grow bg-gray-100 overflow-hidden">
-      <div id="container" class="flex flex-col h-full">
-        <div
-          class="flex-grow bg-blue-200 border border-blue-500 flex items-center justify-center"
-        >
-          Div 1
-        </div>
-        <div
-          class="flex-grow bg-blue-200 border border-blue-500 flex items-center justify-center"
-        >
-          Div 2
-        </div>
-        <div
-          class="flex-grow bg-blue-200 border border-blue-500 flex items-center justify-center"
-        >
-          Div 3
-        </div>
-      </div>
+      <div id="container" class="flex flex-col h-full"></div>
     </main>
+
+    <script>
+      const container = document.getElementById("container");
+      const numberOfDivs = 5;
+
+      for (let i = 0; i < numberOfDivs; i++) {
+        const div = document.createElement("div");
+        div.className =
+          "flex-grow bg-blue-200 border border-blue-500 flex items-center justify-center";
+        div.textContent = `Div ${i + 1}`;
+        container.appendChild(div);
+      }
+    </script>
   </body>
 </html>
