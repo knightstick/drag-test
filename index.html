@@ -16,22 +16,30 @@
       <h1 class="text-3xl font-bold">Drag Test</h1>
     </header>
     <main class="flex-grow bg-gray-100 overflow-hidden">
-      <div id="container" class="flex flex-col h-full"></div>
+      <div id="container" class="flex h-[calc(100vh-100px)] gap-4"></div>
     </main>
 
     <script>
       const container = document.getElementById("container");
-      const numberOfDivs = 5;
+      const columnCounts = [5, 3, 0, 1];
 
-      for (let i = 0; i < numberOfDivs; i++) {
-        const div = document.createElement("div");
-        div.className =
-          "flex-grow bg-blue-200 border border-blue-500 flex items-center justify-center cursor-move";
-        div.textContent = `Div ${i + 1}`;
-        container.appendChild(div);
-      }
+      columnCounts.forEach((count, index) => {
+        const column = document.createElement("div");
+        column.className = "flex-1 bg-gray-100 p-2 overflow-y-auto";
+        column.id = `column-${index}`;
 
-      dragula([container], {
+        for (let i = 0; i < count; i++) {
+          const div = document.createElement("div");
+          div.className =
+            "bg-blue-200 boder border-blue-500 p-4 mb-2 cursor move";
+          div.textContent = `Column ${index + 1} - Div ${i + 1}`;
+          column.appendChild(div);
+        }
+
+        container.appendChild(column);
+      });
+
+      dragula(Array.from(container.children), {
         direction: "vertical",
       });
     </script>
