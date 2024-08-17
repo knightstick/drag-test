@@ -26,10 +26,14 @@
       for (let i = 0; i < numberOfDivs; i++) {
         const div = document.createElement("div");
         div.className =
-          "flex-grow bg-blue-200 border border-blue-500 flex items-center justify-center";
+          "flex-grow bg-blue-200 border border-blue-500 flex items-center justify-center cursor-move";
         div.textContent = `Div ${i + 1}`;
         container.appendChild(div);
       }
+
+      dragula([container], {
+        direction: "vertical",
+      });
     </script>
   </body>
 </html>
